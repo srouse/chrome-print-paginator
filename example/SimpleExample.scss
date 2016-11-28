@@ -1,0 +1,22 @@
+
+
+@import '../dist/cssmodel/scss/_core_mixins';
+
+
+cpp-page {
+    // you have to add your own padding
+    @include row16ltr-padding-top-0-9;
+    @include row16ltr-padding-bottom-0-3;
+    
+    @include col12ltr-padding-width-0-6;
+}
+
+    cpp-header {
+        @include row16ltr-height-1;
+    }
+
+    cpp-page-section {
+        background-color: #eee;
+        @include row16ltr-height-2;
+        @include row16ltr-margin-bottom-0-1;
+    }

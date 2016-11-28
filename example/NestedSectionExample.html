@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link 	rel="stylesheet" type="text/css"
+				href="NestedSectionExample.css">
+
+		<!-- last -->
+        <link 	rel="stylesheet" type="text/css"
+				href="../dist/chrome-print-paginator.css">
+		<script type="text/javascript"
+				src="../dist/chrome-print-paginator.js"></script>
+
+	</head>
+	<body data-do_toggle_overlay="true">
+		<cpp class="
+            my-page">
+			<cpp-page data-is_single_page="false">
+				<cpp-comments-overlay
+                    onClick="toggleCommentsOverlay()">
+                </cpp-comments-overlay>
+
+                <cpp-header>
+                    Page Header
+                </cpp-header>
+
+                <cpp-page-body>
+
+                    <cpp-page-section class="
+                        cpp-page-section--page">
+						<cpp-page-section-header>
+							section header:
+                            <# if ( section_number > 1 ) {  #>
+								(Continued)
+							<# }  #>
+						</cpp-page-section-header>
+						<cpp-page-section-body>
+                            <cpp-page-section-section>
+                                section section 1- 1
+			                </cpp-page-section-section>
+                            <cpp-page-section-section>
+                                section section 1- 2
+			                </cpp-page-section-section>
+						</cpp-page-section-body>
+						<cpp-page-section-footer>
+							<#= ( continued ) ? "continued on next page" : "" #>
+						</cpp-page-section-footer>
+	                </cpp-page-section>
+
+                    <cpp-page-section class="
+                        cpp-page-section--page">
+						<cpp-page-section-header>
+							section header:
+                            <# if ( section_number > 1 ) {  #>
+								(Continued)
+							<# }  #>
+						</cpp-page-section-header>
+						<cpp-page-section-body>
+                            <cpp-page-section-section>
+                                section section 2- 1
+			                </cpp-page-section-section>
+                            <cpp-page-section-section>
+                                section section 2- 2
+			                </cpp-page-section-section>
+						</cpp-page-section-body>
+						<cpp-page-section-footer>
+							<#= ( continued ) ? "continued on next page" : "" #>
+						</cpp-page-section-footer>
+	                </cpp-page-section>
+
+                    <cpp-page-section class="
+                        cpp-page-section--page">
+						<cpp-page-section-header>
+							section header:
+                            <# if ( section_number > 1 ) {  #>
+								(Continued)
+							<# }  #>
+						</cpp-page-section-header>
+						<cpp-page-section-body>
+                            <cpp-page-section-section>
+                                section section 3- 1
+			                </cpp-page-section-section>
+                            <cpp-page-section-section>
+                                section section 3- 2
+			                </cpp-page-section-section>
+						</cpp-page-section-body>
+						<cpp-page-section-footer>
+							<#= ( continued ) ? "continued on next page" : "" #>
+						</cpp-page-section-footer>
+	                </cpp-page-section>
+
+                    <cpp-page-section class="
+                        cpp-page-section--page">
+						<cpp-page-section-header>
+							section header:
+                            <# if ( section_number > 1 ) {  #>
+								(Continued)
+							<# }  #>
+						</cpp-page-section-header>
+						<cpp-page-section-body>
+                            <cpp-page-section-section>
+                                section section 4- 1
+			                </cpp-page-section-section>
+                            <cpp-page-section-section>
+                                section section 4- 2
+			                </cpp-page-section-section>
+						</cpp-page-section-body>
+						<cpp-page-section-footer>
+							<#= ( continued ) ? "continued on next page" : "" #>
+						</cpp-page-section-footer>
+	                </cpp-page-section>
+
+                    <cpp-page-section class="
+                        cpp-page-section--page">
+						<cpp-page-section-header>
+							section header:
+                            <# if ( section_number > 1 ) {  #>
+								(Continued)
+							<# }  #>
+						</cpp-page-section-header>
+						<cpp-page-section-body>
+                            <cpp-page-section-section>
+                                section section 5- 1
+			                </cpp-page-section-section>
+                            <cpp-page-section-section>
+                                section section 5- 2
+			                </cpp-page-section-section>
+						</cpp-page-section-body>
+						<cpp-page-section-footer>
+							<#= ( continued ) ? "continued on next page" : "" #>
+						</cpp-page-section-footer>
+	                </cpp-page-section>
+
+				</cpp-page-body>
+
+                <cpp-footer>
+                    This is a footer <#=page_number#> of <#==total_pages#>
+                </cpp-footer>
+
+
+            </cpp-page>
+        </cpp>
+    </body>
+</html>

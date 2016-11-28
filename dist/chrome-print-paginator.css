@@ -1,0 +1,106 @@
+/**************************
+           RESETS
+***************************/
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px; }
+
+* {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; }
+
+/**************************
+     PRINT PAGE LAYOUTS
+***************************/
+@media print {
+  @page {
+    margin: 0.0cm;
+    size: Letter portrait; } }
+
+@media screen {
+  cpp {
+    background-color: #ccc;
+    display: -ms-flexbox !important;
+    -ms-flex-direction: column !important;
+    -ms-flex-pack: start !important;
+    -ms-flex-align: center !important;
+    display: flex !important;
+    flex-flow: column nowrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important; } }
+
+cpp cpp-overlay {
+  position: absolute !important;
+  top: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  left: 0px !important;
+  z-index: 600 !important;
+  display: none;
+  transition: opacity .3s;
+  background-size: contain;
+  opacity: 1; }
+
+.cpp--done cpp-page {
+  display: flex !important; }
+
+cpp-templates {
+  display: none !important; }
+
+cpp-page {
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  -ms-flex-pack: start;
+  -ms-flex-align: stretch;
+  display: flex !important;
+  flex-flow: column nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  height: 27.94cm !important;
+  width: 21.59cm !important;
+  position: relative  !important;
+  display: none !important;
+  background-color: #fff; }
+  @media print {
+    cpp-page {
+      page-break-after: always;
+      page-break-inside: avoid; } }
+  @media screen {
+    cpp-page {
+      margin-top: 1.746cm !important;
+      margin-bottom: 1.746cm !important;
+      box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.2); } }
+
+cpp-page-section,
+cpp-page-section-body {
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  -ms-flex-pack: start;
+  -ms-flex-align: stretch;
+  display: flex !important;
+  flex-flow: column nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important; }
+
+cpp-page-body {
+  -ms-flex: 1;
+  flex: 1 !important;
+  min-height: 0 !important;
+  /* firefox hack for scrolling children */
+  display: flex !important;
+  /* webkit hack for height issues */
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  -ms-flex-pack: start;
+  -ms-flex-align: stretch;
+  display: flex !important;
+  flex-flow: column nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important; }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link 	rel="stylesheet" type="text/css"
+				href="SimpleExample.css">
+
+		<!-- last -->
+        <link 	rel="stylesheet" type="text/css"
+				href="../dist/chrome-print-paginator.css">
+		<script type="text/javascript"
+				src="../dist/chrome-print-paginator.js"></script>
+
+	</head>
+	<body data-do_toggle_overlay="true">
+		<cpp class="
+            my-page">
+			<cpp-page data-is_single_page="false">
+				<cpp-comments-overlay
+                    onClick="toggleCommentsOverlay()">
+                </cpp-comments-overlay>
+
+                <cpp-header>
+                    Page Header
+                </cpp-header>
+
+                <cpp-page-body>
+
+                    <cpp-page-section>
+						Section 1
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section 2
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section 3
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section 4
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section 5
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section 6
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section7
+	                </cpp-page-section>
+
+					<cpp-page-section>
+						Section 8
+	                </cpp-page-section>
+
+				</cpp-page-body>
+
+                <cpp-footer>
+                    This is a footer <#=page_number#> of <#==total_pages#>
+                </cpp-footer>
+
+
+            </cpp-page>
+        </cpp>
+    </body>
+</html>
