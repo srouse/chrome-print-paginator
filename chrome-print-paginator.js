@@ -215,13 +215,13 @@ function createNewPage ( content ) {
 	var new_page = $("<cpp-page></cpp-page>");
 
 	new_page.append(
-		$(new Microtemplate( "<cpp-header>" + header.html() + "</cpp-header>" , "header" ).parse(paginator.template_data))
+		$(new Microtemplate( "<cpp-header class='"+ header.attr("class") +"'>" + header.html() + "</cpp-header>" , "header" ).parse(paginator.template_data))
 	);
 	new_page.append(
 		$("<cpp-page-body></cpp-page-body>")
 	);
 	new_page.append(
-		$(new Microtemplate( "<cpp-footer>" + footer.html() + "</cpp-footer>" , "footer" ).parse(paginator.template_data))
+		$(new Microtemplate( "<cpp-footer class='"+ footer.attr("class") +"'>" + footer.html() + "</cpp-footer>" , "footer" ).parse(paginator.template_data))
 	);
 
 	$( print_selector ).append( new_page );
