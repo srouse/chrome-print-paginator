@@ -2,7 +2,7 @@
 	"name": "chrome-print-paginator",
 	"description": "Paginate HTML pages for printing in Chrome",
 	"author": "srouse",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"dependencies": {
 	},
 	"devDependencies": {

@@ -549,8 +549,8 @@ $(window).ready(function () {
 	if ( do_slow_iteration ) {
 		renderContentList(function(){
 			postProcessVariables();
-			if ( paginatorPostprocess )
-				paginatorPostprocess();
+			if ( window.paginatorPostprocess )
+				window.paginatorPostprocess();
 			//processCanvasPies();
 
 			renderOverlay();
@@ -558,8 +558,8 @@ $(window).ready(function () {
 	}else{
 		renderContentList();
 		postProcessVariables();
-		if ( paginatorPostprocess )
-			paginatorPostprocess();
+		if ( window.paginatorPostprocess )
+			window.paginatorPostprocess();
 		//processCanvasPies();
 
 		renderOverlay();
