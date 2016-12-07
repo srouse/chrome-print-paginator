@@ -12,6 +12,14 @@
 		<script type="text/javascript"
 				src="../dist/chrome-print-paginator.js"></script>
 
+		<script>
+
+			var paginatorPostprocess = function() {
+				console.log("Run after pagination....");
+			}
+
+		</script>
+
 	</head>
 	<body data-do_toggle_overlay="true">
 		<cpp class="
@@ -135,6 +143,7 @@
 				</cpp-page-body>
 
                 <cpp-footer>
+					<#= ( page_continue ) ? "This page continued" : "this page did not continue" #>
                     This is a footer <#=page_number#> of <#==total_pages#>
                 </cpp-footer>
 

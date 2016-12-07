@@ -12,6 +12,14 @@
 		<script type="text/javascript"
 				src="../dist/chrome-print-paginator.js"></script>
 
+		<script>
+
+			var paginatorPostprocess = function() {
+				console.log("Run after pagination....");
+			}
+
+		</script>
+
 	</head>
 	<body data-do_toggle_overlay="true">
 		<cpp class="

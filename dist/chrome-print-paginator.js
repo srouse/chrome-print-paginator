@@ -211,29 +211,66 @@ function processTemplates () {
 	paginator.content_list.detach();
 }
 
+function destroyLastPage () {
+	if ( paginator.focused_page ) {
+		paginator.template_data.page_continue = false;
+		_finishPage();
+	}else{
+		paginator.template_data.page_continue = true;// assume true till not
+	}
+
+	paginator.focused_page = false;
+}
+
+	function _finishPage () {
+		if ( paginator.focused_header ) {
+			paginator.focused_header.html(
+				$(new Microtemplate( "<div>" + paginator.focused_header_template.html() + "</div>" , "header" ).parse(paginator.template_data)).html()
+			);
+		}
+		if ( paginator.focused_footer ) {
+			paginator.focused_footer.html(
+				$(new Microtemplate( "<div>" + paginator.focused_footer_template.html() + "</div>" , "footer" ).parse(paginator.template_data)).html()
+			);
+		}
+	}
+
 function createNewPage ( content ) {
+
+	if ( paginator.focused_page ) {
+		paginator.template_data.page_continue = true;
+		_finishPage();
+	}
+
 	paginator.template_data.page_number++;
 	paginator.template_data._total_pages++;
 
 	var header = content.find( header_selector );
 	var footer = content.find( footer_selector );
 
+	paginator.focused_header_template = header;
+	paginator.focused_footer_template = footer;
+
 	var new_page = $("<cpp-page></cpp-page>");
 
 	new_page.append(
-		$(new Microtemplate( "<cpp-header>" + header.html() + "</cpp-header>" , "header" ).parse(paginator.template_data))
+		$(new Microtemplate( "<cpp-header class='"+ header.attr("class") +"'>" + header.html() + "</cpp-header>" , "header" ).parse(paginator.template_data))
 	);
 	new_page.append(
 		$("<cpp-page-body></cpp-page-body>")
 	);
 	new_page.append(
-		$(new Microtemplate( "<cpp-footer>" + footer.html() + "</cpp-footer>" , "footer" ).parse(paginator.template_data))
+		$(new Microtemplate( "<cpp-footer class='"+ footer.attr("class") +"'>" + footer.html() + "</cpp-footer>" , "footer" ).parse(paginator.template_data))
 	);
 
 	$( print_selector ).append( new_page );
 
 	paginator.focused_page = new_page;
 	paginator.focused_body = paginator.focused_page.find( body_selector );
+
+	// point at focused_header and focused_footer....
+	paginator.focused_header = new_page.find( header_selector );
+	paginator.focused_footer = new_page.find( footer_selector );
 }
 
 function renderContentList ( doneFunk ) {
@@ -269,6 +306,7 @@ function renderContentList ( doneFunk ) {
 				}
 			}
 
+			destroyLastPage();
 			return;
 		}
 
@@ -297,7 +335,8 @@ function renderContentList ( doneFunk ) {
 					}
 				},
 				function() {
-					paginator.focused_page = false;
+					//paginator.focused_page = false;
+					destroyLastPage();
 					doneFunk();
 				}
 			);
@@ -326,7 +365,8 @@ function renderContentList ( doneFunk ) {
 		}
 
 		//start new content on new page....
-		paginator.focused_page = false;
+		destroyLastPage();
+		//paginator.focused_page = false;
 	}
 
 		function appendSectionableSection ( section, content ) {
@@ -450,11 +490,9 @@ function renderContentList ( doneFunk ) {
 		}
 	}
 
-
 function postProcessVariables() {
 	$(page_number_selector).html( paginator.template_data._total_pages );
 }
-
 
 var overlay = 0;
 function toggleOverlay() {
@@ -478,6 +516,7 @@ function toggleOverlay() {
 		overlay = .3;
 	}
 }
+
 function renderOverlay () {
 	var target = $('[data-do_toggle_overlay="true"]');
 
@@ -496,6 +535,7 @@ var paginator = {
 	rendered_pages:[],
 	focused_page:false,
 	template_data:{
+		page_continue:true,//assume it does till it doesn't
 		page_number:0,
 		total_pages:"<span class='total-pages-variable'></span>",
 		_total_pages:0
@@ -509,6 +549,8 @@ $(window).ready(function () {
 	if ( do_slow_iteration ) {
 		renderContentList(function(){
 			postProcessVariables();
+			if ( paginatorPostprocess )
+				paginatorPostprocess();
 			//processCanvasPies();
 
 			renderOverlay();
@@ -516,10 +558,10 @@ $(window).ready(function () {
 	}else{
 		renderContentList();
 		postProcessVariables();
+		if ( paginatorPostprocess )
+			paginatorPostprocess();
 		//processCanvasPies();
 
 		renderOverlay();
 	}
-
-
 });
